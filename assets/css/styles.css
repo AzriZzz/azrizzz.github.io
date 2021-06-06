@@ -530,6 +530,10 @@ img {
     width: 80%;
 }
 
+.skills__react {
+    width: 60%;
+}
+
 .skills__php {
     width: 65%;
 }
