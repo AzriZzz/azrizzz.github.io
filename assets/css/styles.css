@@ -1160,6 +1160,10 @@ img {
         margin-left: auto;
     }
 
+    .nav-empty {
+        display: none;
+    }
+
     .change-theme {
         margin: 0;
     }
