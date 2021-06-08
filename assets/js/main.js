@@ -113,9 +113,12 @@ let swiperPortfolio = new Swiper(".portfolio__container", {
 /*==================== TESTIMONIAL ====================*/
 
 let swiperTestimonial = new Swiper(".testimonial__container", {
-    loop: true,
     grabCursor: true,
     spaceBetween: 48,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
     pagination: {
       el: ".swiper-pagination",
       clickable: true,
@@ -126,7 +129,7 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
             slidesPerView: 2,
         }
     }
-  });
+});
 
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
