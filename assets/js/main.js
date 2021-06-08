@@ -116,7 +116,7 @@ let swiperTestimonial = new Swiper(".testimonial__container", {
     grabCursor: true,
     spaceBetween: 48,
     autoplay: {
-        delay: 2500,
+        delay: 4000,
         disableOnInteraction: false,
     },
     pagination: {
