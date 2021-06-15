@@ -7,53 +7,34 @@ window.onload = function() {
         var checkTitle = document.getElementById('user_title').value;
         var checkMessage = document.getElementById('message').value;
 
-        var labelName = document.getElementsByClassName('contact__name');
-        var labelEmail = document.getElementsByClassName('contact__email');
-        var labelTitle = document.getElementsByClassName('contact__title');
-        var labelMessage = document.getElementsByClassName('contact__message');
-
         var tempParams = {
             contact__name: checkName,
             contact__email: checkEmail,
-            contact__title: checkTitle,
+            user_title: checkTitle,
             contact__message: checkMessage
         }
 
-        // for (const el in tempParams) {
-        //     if 
-        //     console.log(`${el}: ${tempParams[el]}`);
-        // }
+        var counter = 0;
 
-        if (tempParams.user_name == '' || tempParams.user_name.length == 0) {
-            // labelName.addClass = 
-            // addClass(labelName, 'content_error');
-            var label = labelName[0];
-            label.classList.add('content_error')
-            console.log(labelName)
+        for (const el in tempParams) {
+            var label = document.getElementsByClassName(el)[0];
+            if (tempParams[el] == '' || tempParams[el].length == 0) {
+                label.classList.add('content_error');
+            } else {
+                label.classList.remove('content_error');
+                counter += 1;
+            }            
         }
 
-        if (tempParams.user_email == '' || tempParams.user_email.length == 0) {
-            checkEmail = 'Email ';
-        }
+        var objectLength = Object.keys(tempParams).length;
 
-        if (tempParams.user_title == '' || tempParams.user_title.length == 0) {
-            checkTitle = 'Title ';
-        }
-
-        if (tempParams.message == '' || tempParams.message.length == 0) {
-            checkMessage = ' Message.';
-        }
-
-        if ( checkName !== '' || checkEmail !== '' || checkTitle !== '' || checkMessage !== '') {
-            alert(
-                `Please enter your ${checkName} ${checkEmail} ${checkTitle} ${checkMessage}`
-            );
+        if (counter < objectLength) {
+            alert('Please fill in all field.');
         } else {
             emailjs.sendForm('service_kdbchky', 'template_haiw589', this)
             .then(function() {
-                console.log('SUCCESS!');
                 alert(
-                    `Email has been sent. We will contact you as soon as possible!`
+                    `Email sent! We will contact you as soon as possible!`
                 );
             }, function(error) {
                 alert(
@@ -61,5 +42,6 @@ window.onload = function() {
                 );
             });
         }
+        counter = 0;
     });
 }
