@@ -906,6 +906,11 @@ img {
     color: var(--title-color);
 }
 
+.content_error {
+    color: tomato;
+    font-weight: 600;
+}
+
 .contact__input {
     width: 100%;
     background-color: var(--input-color);
