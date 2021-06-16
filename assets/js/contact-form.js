@@ -1,7 +1,6 @@
 window.onload = function() {
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        const Swal = require('sweetalert2');
         
         var checkName = document.getElementById('user_name').value;
         var checkEmail = document.getElementById('user_email').value;
@@ -30,23 +29,31 @@ window.onload = function() {
         var objectLength = Object.keys(tempParams).length;
 
         if (counter < objectLength) {
-            // alert('Please fill in all field.');
             Swal.fire({
-                title: 'Error!',
-                text: 'Do you want to continue',
                 icon: 'error',
-                confirmButtonText: 'Cool'
-            })
+                title: 'Oops...',
+                text: 'You still have some field empty!',
+                confirmButtonColor: '#FF6437',
+                confirmButtonText: 'CLICK',
+            })        
         } else {
             emailjs.sendForm('service_kdbchky', 'template_haiw589', this)
             .then(function() {
-                alert(
-                    `Email sent! We will contact you as soon as possible!`
-                );
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Email sent!',
+                    text: 'We will contact you as soon as possible!',
+                    confirmButtonColor: '#6E57E0',
+                    confirmButtonText: 'CLICK',
+                })
             }, function(error) {
-                alert(
-                    `Something is wrong. We will fix this shortly!`
-                );
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Something is wrong...',
+                    text: 'We will fix this shortly!',
+                    confirmButtonColor: '#FF6437',
+                    confirmButtonText: 'CLICK',
+                })
             });
         }
         counter = 0;
