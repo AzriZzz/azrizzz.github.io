@@ -2,19 +2,14 @@ window.onload = function() {
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault();
         
-        var checkName = document.getElementById('user_name').value;
-        var checkEmail = document.getElementById('user_email').value;
-        var checkTitle = document.getElementById('user_title').value;
-        var checkMessage = document.getElementById('message').value;
+        var counter = 0;
 
         var tempParams = {
-            contact__name: checkName,
-            contact__email: checkEmail,
-            user_title: checkTitle,
-            contact__message: checkMessage
+            user_name: document.getElementById('user_name').value,
+            user_email: document.getElementById('user_email').value,
+            user_title: document.getElementById('user_title').value,
+            user_message: document.getElementById('user_message').value
         }
-
-        var counter = 0;
 
         for (const el in tempParams) {
             var label = document.getElementsByClassName(el)[0];
@@ -34,7 +29,7 @@ window.onload = function() {
                 title: 'Oops...',
                 text: 'You still have some field empty!',
                 confirmButtonColor: '#FF6437',
-                confirmButtonText: 'CLICK',
+                confirmButtonText: '😢',
             })        
         } else {
             emailjs.sendForm('service_kdbchky', 'template_haiw589', this)
@@ -44,15 +39,21 @@ window.onload = function() {
                     title: 'Email sent!',
                     text: 'We will contact you as soon as possible!',
                     confirmButtonColor: '#6E57E0',
-                    confirmButtonText: 'CLICK',
+                    confirmButtonText: '😊',
                 })
+                
+                // reinitialize value
+                for (const el in tempParams) {
+                    document.getElementById(el).value = '';           
+                }
+
             }, function(error) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Something is wrong...',
                     text: 'We will fix this shortly!',
                     confirmButtonColor: '#FF6437',
-                    confirmButtonText: 'CLICK',
+                    confirmButtonText: '😳',
                 })
             });
         }
