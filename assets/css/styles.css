@@ -323,6 +323,10 @@ img {
     font-size: var(--big-font-size);
 }
 
+.home__title .typed-animation, .home__title .typed-cursor{
+    color: var(--first-color)
+}
+
 .home__subtitle {
     font-size: var(--h3-font-size);
     color: var(--text-color);
