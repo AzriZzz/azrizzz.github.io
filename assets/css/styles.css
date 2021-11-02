@@ -458,6 +458,7 @@ img {
 /*==================== SKILLS ====================*/
 .skills__container {
     row-gap: 0;
+    grid-template-columns: repeat(4,1fr);
 }
 
 .skills__header {
@@ -1121,7 +1122,7 @@ img {
     }
 
     .skills__container {
-        grid-template-columns: repeat(5,1fr);
+        grid-template-columns: repeat(9,1fr);
     }
 
 
